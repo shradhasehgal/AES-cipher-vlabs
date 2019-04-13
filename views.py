@@ -34,6 +34,10 @@ def feedback():
 def procedure():
 	return render_template('Procedure.html', topic ='Procedure')
 
+@app.route("/further")
+def further():
+	return render_template('Further.html', topic ='Further Readings')
+
 
 if __name__ == '__main__':
 	app.run(debug = True)
