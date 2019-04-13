@@ -22,7 +22,8 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='vendors/font-awesome/css/font-awesome.css') }}">
 
     <!-- Custom CSS -->
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"></script>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	<script type="text/javascript" src = 'tabs.js'></script>
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-67558473-1', 'auto');ga('send', 'pageview');</script>	
 </head>
 <body id="page-top" class="index">
@@ -39,7 +40,7 @@
 			                    <span class="icon-bar" style="background-color: #77BB41"></span>
 			                    <span class="icon-bar" style="background-color: #77BB41"></span>
 			                </button>
-			                <a class="navbar-brand main-logo-a" href="http://vlabs.ac.in/index.html"><img src="../../../../images/logo-new.png" class="img-responsive main-logo" /></a>
+			                <a class="navbar-brand main-logo-a" href="http://vlabs.ac.in/index.html"><img src="{{ url_for('static', filename='images/logo-new.png') }}" class="img-responsive main-logo" /></a>
 			            </div>			
 			                        
 			            <!-- Collect the nav links, forms, and other content for toggling -->
@@ -92,7 +93,7 @@
 					<div class="row">
 						<div class="col-md-2 sidebar-col-2">
 						<!--edit1-->
-<a href="{{url_for('introduction')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Introduction</h3></a><a href="{{url_for('theory')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Theory</h3></a><a href="Objective.html?domain=Computer Science&lab=Cryptography Lab" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Objective</h3></a><a href="{{url_for('experiment')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Experiment</h3></a><a href="{{url_for('manual')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Manual</h3></a><a href="{{url_for('quiz')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Quizzes</h3></a><a href="{{url_for('procedure')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Procedure</h3></a><a href="Further Readings.html?domain=Computer Science&lab=Cryptography Lab" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Further Readings</h3></a><a href="{{url_for('feedback')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Feedback</h3></a> </div>
+<a href="{{url_for('introduction')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Introduction</h3></a><a href="{{url_for('theory')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Theory</h3></a><a href="{{url_for('objective')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Objective</h3></a><a href="{{url_for('experiment')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Experiment</h3></a><a href="{{url_for('manual')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Manual</h3></a><a href="{{url_for('quiz')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Quizzes</h3></a><a href="{{url_for('procedure')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Procedure</h3></a><a href="Further Readings.html?domain=Computer Science&lab=Cryptography Lab" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Further Readings</h3></a><a href="{{url_for('feedback')}}" class="sidebar-a" > <h3 class="text-h3-darkblue" style="margin-top: 2px;">Feedback</h3></a>						</div>
 						
 						<div class="col-md-10 lab-list-col-10">
 							
@@ -158,16 +159,16 @@
 
 
 	<!-- jQuery -->
-    <script src="../../../../js/jquery.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
 	<!-- Custom Theme JavaScript -->
-    <script src="../../../../js/custom.js"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
     
     <!-- Include js plugin -->
-	<script src="../../../../vendors/owl-carousel/owl.carousel.js"></script>
+	<script src="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.js') }}"></script>
 	
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -176,8 +177,8 @@
 		  owl.owlCarousel({
 		      navigation: true,
 		      navigationText: [
-		                       "<img src='../../../../images/left-arrow.png'>",
-		                       "<img src='../../../../images/right-arrow.png'>"
+		                       "<img src=\"{{ url_for('static', filename='/images/left-arrow.png') }}\">",
+		                       "<img src=\"{{ url_for('static', filename='images/right-arrow.png') }}\">"
 		                       ],
 		      /* autoPlay : 3000,
 		      stopOnHover : true */
@@ -188,8 +189,8 @@
 		  owl.owlCarousel({
 		      navigation: true,
 		      navigationText: [
-		                       "<img src='../../../../images/left-arrow.png'>",
-		                       "<img src='../../../../images/right-arrow.png'>"
+		                       "<img src=\"{{ url_for('static', filename='/images/left-arrow.png') }}\">",
+		                       "<img src=\"{{ url_for('static', filename='images/right-arrow.png') }}\">"
 		                       ],
 		      autoPlay : 3000,
 		      stopOnHover : true,
