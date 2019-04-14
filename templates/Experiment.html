@@ -122,7 +122,7 @@
 	<textarea cols="50" id="num1" name="num1" rows="1" style="float: left" ></textarea><br>
     <textarea cols="50" id="num2" name="num2" rows="1" style="float: left"></textarea> 
 
-    <input name="calculateXOR" onclick="displayXOR()" type="button" value="Calculate XOR" style="float: left">
+    <input name="calculateXOR" onclick="XOR()" type="button" value="Calculate XOR" style="float: left">
 <br><p>XOR answer:
 <textarea cols="44" id="xor" name="xor" readonly="readonly" rows="1"></textarea></p>
 </input></pre></p> </hr></div>
@@ -215,6 +215,10 @@
     
     <!-- Include js plugin -->
 	<script src="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/exp8/aes.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/exp8/aes-enc.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/aes-dec.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/aes-test.js') }}"></script>
 	
 	<script type="text/javascript">
 	$(document).ready(function() {

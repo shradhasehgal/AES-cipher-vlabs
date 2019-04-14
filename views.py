@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, request
+from appy import *
 
 app = Flask(__name__)
 
@@ -37,6 +38,30 @@ def procedure():
 @app.route("/further")
 def further():
 	return render_template('Further.html', topic ='Further Readings')
+
+@app.route("/experiment/nextplaintext", methods=['GET'])
+def nextplaintext():
+	info = {
+		"plainarea": rando()
+	}
+
+	return jsonify(info)
+
+
+@app.route("/experiment/nextkey", methods=['GET'])
+def nextkey():
+	info = {
+		"key": rando()
+	}
+
+	return jsonify(info)
+	
+@app.route("/experiment/answer", methods=['GET','POST'])
+def answer():
+	data = request.get_json()
+	one = str(data.get('one'))
+	two = str(data.get('two'))
+	return jsonify(one+two)
 
 
 if __name__ == '__main__':

@@ -124,21 +124,44 @@ function randomHexString(length) {
 }
 
 function nextPlainText() {
-    var length_plainblock = 32;
+    /*var length_plainblock = 32;
     var num_plainblocks = 5;
     var plaintext = "";
 
     for( var i=0; i < num_plainblocks; i++ ) {
 	plaintext += randomHexString(length_plainblock);
-	plaintext += "\n";
-    }
-    document.getElementById("plainarea").value = plaintext;
+	plaintext += "\n";*/
+    //}
+    $.ajax({
+      type: "GET",
+      url:"/experiment/nextplaintext",
+
+
+      success: function(result){
+        $('#plainarea').text(result.plainarea);
+        console.log(result);
+        console.log(result.plainarea)
+      }
+    });
+    
+    //document.getElementById("plainarea").value = plaintext;
 }
 
 function nextKey() {
-    var selectmenu = document.getElementById("keySize");
+  $.ajax({
+      type: "GET",
+      url:"/experiment/nextkey",
+
+
+      success: function(result){
+        $('#keyarea').text(result.key);
+        console.log(result);
+        console.log(result.key)
+      }
+    });
+    /*var selectmenu = document.getElementById("keySize");
     var chosen_option=selectmenu.options[selectmenu.selectedIndex];
-    document.getElementById("keyarea").value = randomHexString(chosen_option.value/4);
+    document.getElementById("keyarea").value = randomHexString(chosen_option.value/4);*/
 }
 
 function nextIV() {
@@ -151,8 +174,8 @@ function nextCTR() {
     document.getElementById("ctr").value = randomHexString(length_CTR);
 }
 
-function XOR(hex1, hex2) {
-    var l1 = hex1.length-1;
+function XOR() {
+    /*var l1 = hex1.length-1;
     var l2 = hex2.length-1;
 	
 	var output = "";
@@ -174,7 +197,23 @@ function XOR(hex1, hex2) {
     for (i=output.length-1; i>-1; i--) { 
 		revOutput += output.substr(i,1); 
    	} 
-	return revOutput;
+	return revOutput;*/
+  item ={}
+  item["one"] = $('#keyarea').val()
+  item["two"] = $('#plainarea').val()
+  console.log(item)
+
+  $.ajax({
+      type: "POST",
+      url:"/experiment/answer",
+      data: JSON.stringify(item),
+      contentType: 'application/json;charset=UTF-8',
+
+      success: function(result){
+        $('#xor').text(result);
+        console.log(result);
+      }
+    });
 }
 
 function Add_one(hexNum) {
