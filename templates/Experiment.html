@@ -98,63 +98,114 @@
 						<div class="col-md-10 lab-list-col-10">
 							
 							<!--edit -->
-<h1 class="text-h2-lightblue">AES and Modes of Operation</h1><div class="content" id="experiment-article-section-4-content">
-<h2>AES (Rijndael) Encryption</h2>
-<h3>PART I</h3>
-<form name="aestest">
-<p>Choose your mode of operation:
-			<select id="select_mode" name="select_mode" onchange="selectMode();" size="1">
-<option selected="selected" value="ecb">Electronic Code Book (ECB)</option>
-<option value="cbc">Cipher Block Chaining</option>
-<option value="ofb">Output Feedback</option>
-<option value="ctr">Counter mode</option>
-</select></p>
-<hr>
-<h3>PART II</h3>
-<p><pre>Key size in bits: <select id="keySize" name="keySize"><option selected="selected" value="128">128</option><option value="192">192</option><option value="256">256</option></select></pre></p>
-<p>Plaintext:<br> <textarea cols="50" id="plainarea" name="plainarea" readonly="readonly" rows="6"></textarea> <input name="changePlainText" onclick="nextPlainText()" type="button" value="Next Plaintext">
-      <br> Key: <br><textarea cols="50" id="keyarea" name="keyarea" readonly="readonly" rows="1"></textarea> <input name="changeKey" onclick="nextKey()" type="button" value="Next Keytext"> <div id="ivtext">
-        IV: <br><textarea cols="50" id="iv" name="iv" readonly="readonly" rows="1"></textarea> <input name="changeIV" onclick="nextIV()" type="button" value="Next IV"> </input></div> <div id="ctrtext">
-       CTR: <br><textarea cols="50" id="ctr" name="ctr" readonly="readonly" rows="1"></textarea> <input name="changeCTR" onclick="nextCTR()" type="button" value="Next CTR"></p> </input></div> 
-<div id="calculateXor">
-<hr><h3>PART III</h3>
-<p>Calculate XOR:<pre>
-	<textarea cols="50" id="num1" name="num1" rows="1" style="float: left" ></textarea><br>
-    <textarea cols="50" id="num2" name="num2" rows="1" style="float: left"></textarea> 
 
-    <input name="calculateXOR" onclick="XOR()" type="button" value="Calculate XOR" style="float: left">
-<br><p>XOR answer:
-<textarea cols="44" id="xor" name="xor" readonly="readonly" rows="1"></textarea></p>
-</input></pre></p> </hr></div>
-<hr><h3>PART IV</h3>
-<table><tbody>
-<tr>
-<td>Key in hex: </td>
-<td><input name="key" size="66" type="text"/></td></tr>
-<tr><td>Plaintext in hex: </td>
-<td><input name="plaintext" size="66" type="text"/></td>
-</tr>
-<tr>
-<td>Ciphertext in hex: </td>
-<td><input name="ciphertext" size="66" type="text"/></td>
-</tr>
-<tr>
-<td> </td>
-<td>
-<input onclick="doEncryption()" type="button" value="Encrypt">     
+
+
+
+
+
+<h1 class="text-h2-lightblue"> AES and Modes of Operation </h1>
+<div class="content" id="experiment-article-section-4-content">
+    <h2>AES (Rijndael) Encryption</h2>
+    <h3>PART I</h3>
+    <form name="aestest">
+    <p>Choose your mode of operation:
+        <select id="mode" name="select_mode" onchange="selectMode()" size="1">
+            <option selected="selected" value="ecb">Electronic Code Book (ECB)</option>
+            <option value="cbc">Cipher Block Chaining</option>
+            <option value="ofb">Output Feedback</option>
+            <option value="ctr">Counter mode</option>
+        </select>
+    </p>
+    <hr>
+    <h3>PART II</h3>
+    <p>
+        <pre>Key size in bits: <select id="keySize" name="keySize" onchange="selectKey()">
+                <option selected="selected" value="128">128</option>
+                <option value="192">192</option>
+                <option value="256">256</option>
+            </select>
+        </pre>
+    </p>
+    <p>Plaintext:<br> 
+        <textarea cols="50" id="plainarea" name="plainarea" readonly="readonly" rows="6"></textarea> 
+        <input name="changePlainText" onclick="nextPlainText()" type="button" value="Next Plaintext">
+        <br> 
+        Key: 
+        <br>
+        <textarea cols="50" id="keyarea" name="keyarea" readonly="readonly" rows="1"></textarea> 
+        <input name="changeKey" onclick="nextKey()" type="button" value="Next Keytext"> 
+        <div id="ivtext">
+            IV: 
+            <br>
+            <textarea cols="50" id="iv" name="iv" readonly="readonly" rows="1"></textarea> 
+            <input name="changeIV" onclick="nextIV()" type="button" value="Next IV"> </input>
+        </div> 
+        <div id="ctrtext">
+            CTR: 
+        <br>
+        <textarea cols="50" id="ctr" name="ctr" readonly="readonly" rows="1"></textarea> 
+        <input name="changeCTR" onclick="nextCtr()" type="button" value="Next CTR"> </input>
+    </p>
+    </div> 
+    <div id="calculateXor">
+        <hr>
+        <h3>PART III</h3>
+        <p>Calculate XOR:
+            <pre>
+	        <textarea cols="50" id="num1" name="num1" rows="1" style="float: left" ></textarea><br>
+            <textarea cols="50" id="num2" name="num2" rows="1" style="float: left"></textarea> 
+            <input name="calculateXOR" onclick="XOR()" type="button" value="Calculate XOR" style="float: left">
+            <br>
+            <p>
+                XOR answer:
+                <textarea cols="44" id="xor" name="xor" readonly="readonly" rows="1"></textarea>
+            </p>
+            </input></pre>
+        </p> 
+    </div>
+    <hr>
+    <h3>PART IV</h3>
+    <table>
+        <tbody>
+        <tr>
+            <td>Key in hex: </td>
+            <td><input name="key" size="66" type="text"/></td></tr>
+        <tr>
+            <td>Plaintext in hex: </td>
+            <td><input name="plaintext" size="66" type="text"/></td>
+        </tr>
+        <tr>
+            <td>Ciphertext in hex: </td>
+            <td><input name="ciphertext" size="66" type="text"/></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td><input onclick="doEncryption()" type="button" value="Encrypt">     
 			<input onclick="doDecryption()" type="button" value="Decrypt">     
 			<input type="reset" value="Clear"/></input></input></td>
-</tr>
-</tbody></table>
-</hr></input></input></hr></form>
-<hr><h3>PART V</h3>
-<p>Enter your answer here:</p>
-<p><input id="userans" size="65" type="text"> <input onclick="checkAnswer();" type="button" value="Check Answer!"/></input></p>
-<div id="notification" style="width: 300px; height: 10px; padding-top: 20px;"></div>
-</hr></div>						</div>
-					</div>
-			</div>
-			<!-- =================================================================================================================================== -->
+        </tr>
+        </tbody>
+    </table>
+    </input></input></form>
+    <hr>
+    <h3>PART V</h3>
+    <p>Enter your answer here:</p>
+    <p><input id="userans" size="65" type="text"> <input onclick="checkAnswer();" type="button" value="Check Answer!"/></input></p>
+    <div id="notification" style="width: 300px; height: 10px; padding-top: 20px;"></div>
+    </div>						
+    </div>
+	</div>
+	</div>
+
+
+
+
+
+
+
+
+<!-- =================================================================================================================================== -->
 
 
 
@@ -215,14 +266,17 @@
     
     <!-- Include js plugin -->
 	<script src="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/exp8/aes.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/exp8/aes-enc.js') }}"></script>
+    
+    <script src="{{ url_for('static', filename='js/exp8/aes.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/exp8/post_req.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/exp8/flaskJs.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/exp8/aes-enc.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/aes-dec.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/aes-test.js') }}"></script>
 	
 	<script type="text/javascript">
 	$(document).ready(function() {
-		 
+		 console.log(document.getElementById(mode).value);
 		  var owl = $("#owl-demo");
 		  owl.owlCarousel({
 		      navigation: true,
