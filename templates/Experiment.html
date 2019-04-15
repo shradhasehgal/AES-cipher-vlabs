@@ -112,9 +112,9 @@
     <p>Choose your mode of operation:
         <select id="mode" name="select_mode" onchange="selectMode()" size="1">
             <option selected="selected" value="ecb">Electronic Code Book (ECB)</option>
-            <option value="cbc">Cipher Block Chaining</option>
-            <option value="ofb">Output Feedback</option>
-            <option value="ctr">Counter mode</option>
+            <option value="cbc">Cipher Block Chaining (CBC)</option>
+            <option value="ofb">Output Feedback (OFB)</option>
+            <option value="ctr">Counter mode (CTR)</option>
         </select>
     </p>
     <hr>
@@ -133,7 +133,7 @@
         <br> 
         Key: 
         <br>
-        <textarea cols="50" id="keyarea" name="keyarea" readonly="readonly" rows="1"></textarea> 
+        <textarea cols="50" id="keyarea" name="keyarea" readonly="readonly" rows="2"></textarea> 
         <input name="changeKey" onclick="nextKey()" type="button" value="Next Keytext"> 
         <div id="ivtext">
             IV: 
@@ -155,11 +155,11 @@
             <pre>
 	        <textarea cols="50" id="num1" name="num1" rows="1" style="float: left" ></textarea><br>
             <textarea cols="50" id="num2" name="num2" rows="1" style="float: left"></textarea> 
+            
             <input name="calculateXOR" onclick="XOR()" type="button" value="Calculate XOR" style="float: left">
             <br>
-            <p>
-                XOR answer:
-                <textarea cols="44" id="xor" name="xor" readonly="readonly" rows="1"></textarea>
+            <p style="float: left">XOR answer:
+                <textarea cols="44" id="xor" name="xor" readonly="readonly" rows="1" style="float: left"></textarea>
             </p>
             </input></pre>
         </p> 
@@ -170,14 +170,14 @@
         <tbody>
         <tr>
             <td>Key in hex: </td>
-            <td><input name="key" size="66" type="text"/></td></tr>
+            <td><input name="key" id="key" size="66" type="text"/></td></tr>
         <tr>
             <td>Plaintext in hex: </td>
-            <td><input name="plaintext" size="66" type="text"/></td>
+            <td><input name="plaintext" id="plaintext" size="66" type="text"/></td>
         </tr>
         <tr>
             <td>Ciphertext in hex: </td>
-            <td><input name="ciphertext" size="66" type="text"/></td>
+            <td><input name="ciphertext" id="ciphertext" size="66" type="text"/></td>
         </tr>
         <tr>
             <td> </td>

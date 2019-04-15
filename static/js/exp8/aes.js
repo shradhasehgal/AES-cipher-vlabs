@@ -13,7 +13,7 @@ function makeReadable(str) {
     return text;
 }
 
-function doEncryption()
+/*function doEncryption()
 {
     var pt, key;
     var theForm = document.forms[0];
@@ -52,7 +52,7 @@ function doEncryption()
     theForm.plaintext.value = makeReadable(theForm.plaintext.value);
     theForm.ciphertext.value = makeReadable(theForm.ciphertext.value);
 }
-
+*/
 function doDecryption() {
     var ct, key;
     var theForm = document.forms[0];
@@ -90,17 +90,6 @@ function resetDisplay() {
     document.getElementById("ivtext").style.display = "none";
     document.getElementById("ctrtext").style.display = "none";
     document.getElementById("calculateXor").style.display = "none";
-}
-
-function selectMode() {
-    item =  $('#select_mode').value();
-    console.log(item);
-    $.ajax({
-type: "POST",
-data: JSON.stringify(item),
-contentType: 'application/json;charset=UTF-8',
-}
-});
 }
 
 function randomHexString(length) {
@@ -171,42 +160,8 @@ console.log(result.ctr)
 });
 }
 */
-function selectKey() {
-    keySize = $('#keySize').val()
-        console.log("I was here");
-    $.ajax({
-type: "POST",
-url:"/experiment/selectKey",
-data: JSON.stringify(keySize),
-console.log(data);
-contentType: 'application/json;charset=UTF-8', 
-});
-}
 
-function XOR() {
-    /*var l1 = hex1.length-1;
-      var l2 = hex2.length-1;
-
-      var output = "";
-      while (l1>-1 && l2>-1) {
-      output += (parseInt(hex1.charAt(l1), 16) ^ parseInt(hex2.charAt(l2), 16)).toString(16);
-      l1 --; l2 --;
-      }
-      if(l1>-1) {
-      for(var i=l1; i>=0; i-- ) {
-      output += hex1.charAt(i);
-      }
-      }
-      if(l2>-1) {
-      for(var i=l2; i>=0; i-- ) {
-      output += hex2.charAt(i);
-      }
-      }
-      var revOutput = ""; 
-      for (i=output.length-1; i>-1; i--) { 
-      revOutput += output.substr(i,1); 
-      } 
-      return revOutput;*/
+/*function XOR() {
     item ={}
     item["one"] = $('#keyarea').val()
         item["two"] = $('#plainarea').val()
@@ -224,7 +179,7 @@ console.log(result);
 }
 });
 }
-
+*/
 function Add_one(hexNum) {
     var l = hexNum.length-1;
     var carryOver = 1;
