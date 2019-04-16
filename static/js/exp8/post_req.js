@@ -1,4 +1,26 @@
 function selectMode(){
+    var iv = $("#ivtext");
+        var ctr = $("#ctrtext");
+
+        iv.hide();
+        ctr.hide();
+
+        $("select#mode").change(function() {
+            iv.show();
+            ctr.show();
+
+            if (this.value == "ecb") {
+                iv.hide();
+                ctr.hide();
+            } else if (this.value == "cbc") {
+                ctr.hide();
+            } else if (this.value == "ctr") {
+                iv.hide();
+            } else if (this.value == "ofb") {
+                ctr.hide();
+            }
+        });
+        
     item =  document.getElementById('mode').value;
     console.log(document.getElementById('mode').value);
     $.ajax({
