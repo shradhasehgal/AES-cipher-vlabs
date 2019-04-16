@@ -1,34 +1,34 @@
 function checkQuiz() {
 
 	c = 0
-	if($("#q11").is(':checked')) {
-		$('#Q1').css("background-color", "green");
+	if(document.getElementById('A1').value == "1") {
+		$('#A1').css("background-color", "green");
 		c+=1;
 	}
 
 	else
 	{
-		$('#Q1').css("background-color", "red");		
+		$('#A1').css("background-color", "red");		
 	}
 
-	if($("#q21").is(':checked')) {
-		$('#Q2').css("background-color", "green");
+	if(document.getElementById('A2').value=="ECB") {
+		$('#A2').css("background-color", "green");
 		c+=1;
 	}
 
 	else
 	{
-		$('#Q2').css("background-color", "red");		
+		$('#A2').css("background-color", "red");		
 	}
 
-	if($("#q31").is(':checked')){
-		$('#Q3').css("background-color", "green");
+	if(document.getElementById('A3').value=="2"){
+		$('#A3').css("background-color", "green");
 		c+=1;
 	}
 
 	else
 	{
-		$('#Q3').css("background-color", "red");		
+		$('#A3').css("background-color", "red");		
 	}
 
 	alert("Subjective answers coming soon. You scored "+c+"/3. Congrats!");
