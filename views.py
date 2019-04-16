@@ -136,8 +136,8 @@ def nextctr():
 
     return jsonify(info)
 
-@app.route("/experiment/Awer", methods=['GET','POST'])
-def Awer():
+@app.route("/experiment/answer", methods=['GET','POST'])
+def answer():
     data = request.get_json()
     one = str(data.get('one'))
     two = str(data.get('two'))

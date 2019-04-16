@@ -50,7 +50,7 @@ function XOR() {
     item ={}
     item["one"] = document.getElementById('num1').value; 
         item["two"] = document.getElementById('num2').value;
-        console.log(item);
+        //console.log(item);
 
     $.ajax({
         type: "POST",
