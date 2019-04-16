@@ -1,12 +1,35 @@
 from flask import Flask, render_template, jsonify, request
 from reqIss import *
 from Crypto.Cipher import AES
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
 ## Having a default object when no object is selected
 aes_obj = aesMeth()
 key = 128
+
+db = SQLAlchemy(app)
+class students(db.Model):
+    id = db.Column('student_id', db.Integer, primary_key = True)
+    A1 = db.Column(db.String(1))
+    A2 = db.Column(db.String(1))
+    A3 = db.Column(db.String(1))
+    A4 = db.Column(db.String(100))
+    A5 = db.Column(db.String(100))
+    A6 = db.Column(db.String(100))
+    A7 = db.Column(db.String(100))
+
+    def __init__(self,A1,A2,A3,A4,A5,A6,A7):
+        self.A1 = A1
+        self.A2 = A2
+        self.A3 = A3
+        self.A4 = A4
+        self.A5 = A5
+        self.A6 = A6
+        self.A7 = A7
+
+db.create_all()
 
 @app.route("/")
 def introduction():
@@ -30,7 +53,7 @@ def objective():
 
 @app.route("/quiz")
 def quiz():
-    return render_template('Quizzes.html', topic ='Quiz')
+    return render_template('quiz.html', topic ='Quiz')
 
 @app.route("/feedback")
 def feedback():
@@ -113,8 +136,8 @@ def nextctr():
 
     return jsonify(info)
 
-@app.route("/experiment/answer", methods=['GET','POST'])
-def answer():
+@app.route("/experiment/Awer", methods=['GET','POST'])
+def Awer():
     data = request.get_json()
     one = str(data.get('one'))
     two = str(data.get('two'))
@@ -151,8 +174,8 @@ def encrypt():
 
     aes_new = AES.new(bytes.fromhex(one),AES.MODE_ECB)
     enc = aes_new.encrypt(bytes.fromhex(two))
-    ans = printReadable(enc.hex(),8)
-    return jsonify(ans)
+    A = printReadable(enc.hex(),8)
+    return jsonify(A)
 
 @app.route("/experiment/decrypt", methods=['GET','POST'])
 def decrypt():
@@ -172,8 +195,8 @@ def decrypt():
 
     aes_new = AES.new(bytes.fromhex(one),AES.MODE_ECB)
     dec = aes_new.decrypt(bytes.fromhex(two))
-    ans = printReadable(dec.hex(),8)
-    return jsonify(ans)
+    A = printReadable(dec.hex(),8)
+    return jsonify(A)
 
 @app.route("/experiment/check", methods=['GET','POST'])
 def checkAns():
@@ -190,6 +213,17 @@ def checkAns():
     else:
         ret = "False"
     return jsonify(ret)
+
+@app.route('/quiz', methods = ['GET', 'POST'])
+def new():
+   if request.method == 'POST':
+         student = students(request.form['A1'], request.form['A2'],
+            request.form['A3'], request.form['A4'] , request.form['A5'], request.form['A6'], request.form['A7'])
+
+         db.session.add(student)
+         db.session.commit()
+
+   return render_template('quiz.html')
 
 
 if __name__ == '__main__':
