@@ -49,20 +49,24 @@ function selectKey(){
 function XOR() {
     item ={}
     item["one"] = document.getElementById('num1').value; 
-        item["two"] = document.getElementById('num2').value;
+    item["two"] = document.getElementById('num2').value;
         //console.log(item);
+    if(item["one"].length!=item["two"].length)
+        alert("Enter strings of same length!")
+    else
+    {
+        $.ajax({
+            type: "POST",
+            url:"/experiment/answer",
+            data: JSON.stringify(item),
+            contentType: 'application/json;charset=UTF-8',
 
-    $.ajax({
-        type: "POST",
-        url:"/experiment/answer",
-        data: JSON.stringify(item),
-        contentType: 'application/json;charset=UTF-8',
-
-    success: function(result){
-        $('#xor').text(result);
-        console.log(result);
-        }
-    });
+        success: function(result){
+            $('#xor').text(result);
+            console.log(result);
+            }
+        });
+    }
 }
 
 function doEncryption() {
@@ -115,6 +119,9 @@ function checkAnswer() {
 
     success: function(result){
         console.log(result);
+        if(result == "True")
+            alert("Answer is correct!")
+        else alert("Answer is incorrect!")
         }
     });
 }
