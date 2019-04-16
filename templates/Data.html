@@ -1,20 +1,23 @@
 {% include "Header.html" %}
+<div>
 <table>
          <thead>
             <tr>
-               <th> Answer 1    </th>
-               <th> Answer 2    </th>
-               <th> Answer 3    </th>
-               <th> Answer 4    </th>
-               <th> Answer 5    </th>
-               <th> Answer 6    </th>
-               <th> Answer 7    </th>
+               <th>     Identity    </th>
+               <th>     Answer 1    </th>
+               <th>     Answer 2    </th>
+               <th>     Answer 3    </th>
+               <th>     Answer 4    </th>
+               <th>     Answer 5    </th>
+               <th>     Answer 6    </th>
+               <th>     Answer 7    </th>
             </tr>
          </thead>
 
          <tbody>
             {% for student in students %}
                <tr>
+                  <td>{{ student.id }}</td>
                   <td>{{ student.A1 }}</td>
                   <td>{{ student.A2 }}</td>
                   <td>{{ student.A3 }}</td>
@@ -26,4 +29,7 @@
             {% endfor %}
          </tbody>
       </table>
+      </div>
+
+      </div>
 {% include "Footer.html" %}
