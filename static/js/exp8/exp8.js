@@ -1,37 +1,36 @@
 function checkQuiz() {
 
 	c = 0
-	if(document.getElementById('A1').value == "1") {
-		$('#A1').css("background-color", "green");
+	if($('input[name=A1]:checked').val() == "2") {
+		document.getElementById('Q1').style.backgroundColor = "green";
 		c+=1;
 	}
 
 	else
 	{
-		$('#A1').css("background-color", "red");		
+		document.getElementById('Q1').style.backgroundColor = "red";		
 	}
 
-	if(document.getElementById('A2').value=="ECB") {
-		$('#A2').css("background-color", "green");
+	if($('input[name=A2]:checked').val()=="ECB") {
+		document.getElementById('Q2').style.backgroundColor = "green";
 		c+=1;
 	}
 
 	else
 	{
-		$('#A2').css("background-color", "red");		
+		document.getElementById('Q2').style.backgroundColor = "red";		
 	}
 
-	if(document.getElementById('A3').value=="2"){
-		$('#A3').css("background-color", "green");
+	if($('input[name=A3]:checked').val()=="4"){
+		document.getElementById('Q3').style.backgroundColor = "green";
 		c+=1;
 	}
 
 	else
 	{
-		$('#A3').css("background-color", "red");		
+		document.getElementById('Q3').style.backgroundColor = "red";		
 	}
-
-	alert("Subjective answers coming soon. You scored "+c+"/3. Congrats!");
+	console.log($('input[name=A1]:checked').val())
+	alert("Previous records of answers coming Up. You scored "+c+"/3. Congrats!");
 	c=0;
-
 }

@@ -49,7 +49,7 @@ function nextCtr() {
 	});
 }
 
-function checkQuiz() {
+/*function checkQuiz() {
     $.ajax({
 		type: "GET",
 		url:"/experiment/quizdata",
@@ -78,3 +78,4 @@ function checkQuiz() {
 		alert("You scored "+c+"/3"+'\n'+str)
 	});
 }
+}*/

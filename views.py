@@ -220,7 +220,7 @@ def new():
    if request.method == 'POST':
          student = students(request.form['A1'], request.form['A2'],
             request.form['A3'], request.form['A4'] , request.form['A5'], request.form['A6'], request.form['A7'])
-
+         print("Answer for first is " + request.form['A1'])
          db.session.add(student)
          db.session.commit()
 
