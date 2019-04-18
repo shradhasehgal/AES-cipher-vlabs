@@ -35,12 +35,3 @@ $('body').scrollspy({
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
-
-
-if ($("#top").height() < $(document).height()) {
-    $(".footer-div").css({
-        "position": "absolute", 
-        "width": "100%", 
-        "bottom": "0"
-    });
-}

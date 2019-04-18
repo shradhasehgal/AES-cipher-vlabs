@@ -1,10 +1,10 @@
 from flask import Flask, render_template, jsonify, request
-from reqIss import *
+from aesLib import *
 from Crypto.Cipher import AES
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Quiz.db'
 ## Having a default object when no object is selected
 aes_obj = aesMeth()
 key = 128
@@ -54,7 +54,7 @@ def objective():
 
 @app.route("/quiz")
 def quiz():
-    return render_template('quiz.html', topic ='Quiz')
+    return render_template('Quiz.html', topic ='Quiz')
 
 @app.route("/feedback")
 def feedback():
