@@ -9,6 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
 aes_obj = aesMeth()
 key = 128
 
+#Making a database to store all the answers of the Quiz
 db = SQLAlchemy(app)
 class students(db.Model):
     id = db.Column('student_id', db.Integer, primary_key = True)

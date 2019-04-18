@@ -1,8 +1,7 @@
-from Crypto.Cipher import AES
-import numpy as np
-from Crypto import Random
-from Crypto.Random import get_random_bytes
-from Crypto.Util import Counter
+# Importing libraries
+from Crypto.Cipher import AES # Crypto.Cipher is the one which provides basic AES ancryption to the program
+import numpy as np # Numpy allows modification and editing of the arays generated
+from Crypto.Random import get_random_bytes # Random function allows to generate random keys and IVs required for encryption
 
 def xor(str1,str2):
     ''' Gives the XOR of two hex stings with same length'''
@@ -71,6 +70,8 @@ class aesMeth :
         self.genIV()
 
     # Generate functions
+    # Four different functions used as calling them requires no
+    # argument to be passed and hence can be done much faster
     def genKey(self):
         ''' Generates a random key of the given key size'''
         self.key=get_random_bytes(int(self.keySize/8))
@@ -88,6 +89,8 @@ class aesMeth :
         self.ctr = get_random_bytes(8)
 
     # A single generate function
+    # Given as an option if not wanting to use four different functions
+
     '''
     def gen(self,prop):
         if prop == "Key" :
@@ -101,6 +104,8 @@ class aesMeth :
     '''
 
     # Print functions
+    # Four different functions used as calling them requires no
+    # argument to be passed and hence can be done much faster
     def printKey(self):
         ''' Prints the key in hex form which is readable'''
         retStr = printReadable(self.key.hex(),8)
@@ -126,7 +131,8 @@ class aesMeth :
         retStr = printReadable(self.iv.hex(),8)
         return retStr
 
-    #Single print function
+    # Single print function
+    # Given as an option if not wanting to use four different functions
     '''
     def gen(self,prop):
         if prop == "Key" :
