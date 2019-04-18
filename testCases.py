@@ -20,37 +20,22 @@ encyptedDataCBCReq = bytes.fromhex("".join(encyptedDataCBC.split(" ")))
 encyptedDataOFBReq = bytes.fromhex("".join(encyptedDataOFB.split(" ")))
 encyptedDataCTRReq = bytes.fromhex("".join(encyptedDataCTR.split(" ")))
 
-#ECB validation
-new = aesMeth("ECB",128)
-new.key = keyReq
-new.plaintext = plaintextReq
+def computation(mode):
+    new = aesMeth(mode)
+    new.key = keyReq
+    new.plaintext = plaintextReq
+    new.iv = ivReq
+    new.ctr = ctrReq
+    return new.encrypt()
 
-print("Validation for ECB Method")
-print(new.encrypt()==encyptedDataECBReq)
+def test_ECB():
+    assert computation("ECB") == encyptedDataECBReq
 
-#CBC Validation
-new = aesMeth("CBC",128)
-new.key = keyReq
-new.plaintext = plaintextReq
-new.iv = ivReq
+def test_CBC():
+    assert computation("CBC") == encyptedDataCBCReq
 
-print("Validation for CBC Method")
-print(new.encrypt()==encyptedDataCBCReq)
+def test_OFB():
+    assert computation("OFB") == encyptedDataOFBReq
 
-#OFB Validation
-new = aesMeth("OFB",128)
-new.key = keyReq
-new.plaintext = plaintextReq
-new.iv = ivReq
-
-print("Validation for OFB Method")
-print(new.encrypt()==encyptedDataOFBReq)
-
-#CTR Validation
-new = aesMeth("CTR",128)
-new.key = keyReq
-new.plaintext = plaintextReq
-new.ctr = ctrReq
-
-print("Validation for CTR Method")
-print(new.encrypt()==encyptedDataCTRReq)
+def test_CTR():
+    assert computation("CTR") == encyptedDataCTRReq
