@@ -1336,5 +1336,6 @@ font-size: 30px;
 }
 
 table, th, td {
-  border: 10px solid white;
+	border: 10px solid white;
+	text-align: center;
 }

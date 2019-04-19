@@ -215,6 +215,15 @@ def checkAns():
         ret = "False"
     return jsonify(ret)
 
+@app.route("/experiment/showans", methods=['GET'])
+def showans():
+
+    info = {
+        "ans": printReadable(aes_obj.encrypt().hex(),8)
+    }
+
+    return jsonify(info)
+
 @app.route('/quiz', methods = ['GET', 'POST'])
 def new():
    if request.method == 'POST':

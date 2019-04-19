@@ -1,3 +1,6 @@
+// Unless the show Answer is clicked, the textbox should not be available
+$('#showans').css({"display": "none"})
+
 function nextPlainText() {
     $.ajax({
 		type: "GET",
@@ -47,4 +50,19 @@ function nextCtr() {
 		console.log(result.ctr)
 		}
 	});
+}
+
+function showAnswer() {
+	$.ajax({
+	type: "GET",
+	url:"/experiment/showans",
+
+
+success: function(result){
+	$('#showans').css({"display": "block"})
+	$('#showans').val(result.ans);
+	console.log($('#showans').val)
+	console.log(result.ans)
+	}
+});
 }

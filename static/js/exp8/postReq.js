@@ -2,6 +2,7 @@
 $("#ivtext").hide();
 $("#ctrtext").hide();
 
+// Selection of modes should only display the textboxes required
 function selectMode(){
     
     var iv = $("#ivtext");
@@ -14,21 +15,28 @@ function selectMode(){
         iv.show();
         ctr.show();
 
+        // ECB mode only requires key & plaintext
         if (this.value == "ecb") {
             iv.hide();
             ctr.hide();
-        } else if (this.value == "cbc") {
+        } 
+        // CBC mode also requires an IV
+        else if (this.value == "cbc") {
             ctr.hide();
-        } else if (this.value == "ctr") {
+        } 
+        // CTR mode requires a counter but not an IV
+        else if (this.value == "ctr") {
             iv.hide();
-        } else if (this.value == "ofb") {
+        } 
+         // OFB mode also requires an IV
+        else if (this.value == "ofb") {
             ctr.hide();
         }
     });
         
     item =  document.getElementById('mode').value;
-    console.log(document.getElementById('mode').value);
     
+    // Sending the mode to the python script so the validation can be done properly
     $.ajax({
         type: "POST",
         url:"/experiment/selectMode",
@@ -40,8 +48,7 @@ function selectMode(){
 function selectKey(){
     
     item =  document.getElementById('keySize').value;
-    console.log(document.getElementById('keySize').value);
-    
+    // Change of the Key Size affects the algorithm, hence sending it to the script
     $.ajax({
         type: "POST",
         url:"/experiment/selectKey",
@@ -54,10 +61,12 @@ function XOR() {
     item ={}
     item["one"] = document.getElementById('num1').value; 
     item["two"] = document.getElementById('num2').value;
+    // For XOR to be properly calculated, the two stings must be of equal length
     if(item["one"].length!=item["two"].length)
         alert("Enter strings of same length!")
     else
     {
+        // XOR is calculated by the python script, hence sending it
         $.ajax({
             type: "POST",
             url:"/experiment/answer",
@@ -66,15 +75,18 @@ function XOR() {
 
         success: function(result){
             $('#xor').text(result);
-            console.log(result);
             }
         });
     }
 }
 
 function doEncryption() {
+    // For AES encryption, the Key and the Plaintext size must be of 16 bytes
+    // But the values taken are in hex, hence the size must be 32 hex
+    // The Plaintext and Key printed above are space seperated for readability
+    // hence if coppied directly, the size is 35 bytes which should also be accepted 
     item ={}
-    item["one"] = document.getElementById('key').value; 
+    item["one"] = document.getElementById('key').value;
     if(item["one"].length!=32 && item["one"].length!=35)
         alert("Key should only have 16 bytes of characters")
     else{    
@@ -98,6 +110,7 @@ function doEncryption() {
 }
 
 function doDecryption() {
+    //Similarly, decryption also requires 32 hex length
     item ={}
     item["one"] = document.getElementById('key').value; 
     if(item["one"].length!=32 && item["one"].length!=35)
@@ -123,6 +136,8 @@ function doDecryption() {
 }
 
 function checkAnswer() {
+    // The answer calculated by the user is already precalculated by the program, hence  when asked to check
+    // It is sent to the script for validation
     item = document.getElementById('userans').value; 
         console.log(item);
 
