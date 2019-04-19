@@ -94,8 +94,6 @@ def selectKey():
     elif data == '256':
         aes_obj.keySize = 256
         key = 256
-    else:
-        print("WTF")
 
 @app.route("/experiment/nextplaintext", methods=['GET'])
 def nextplaintext():
