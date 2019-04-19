@@ -1,3 +1,7 @@
+//The default method is ECB in which only plaintext and Key are required, hence these are hidden
+$("#ivtext").hide();
+$("#ctrtext").hide();
+
 function selectMode(){
     
     var iv = $("#ivtext");
@@ -50,7 +54,6 @@ function XOR() {
     item ={}
     item["one"] = document.getElementById('num1').value; 
     item["two"] = document.getElementById('num2').value;
-        //console.log(item);
     if(item["one"].length!=item["two"].length)
         alert("Enter strings of same length!")
     else
@@ -72,39 +75,51 @@ function XOR() {
 function doEncryption() {
     item ={}
     item["one"] = document.getElementById('key').value; 
+    if(item["one"].length!=32 && item["one"].length!=35)
+        alert("Key should only have 16 bytes of characters")
+    else{    
         item["two"] = document.getElementById('plaintext').value;
-        console.log(item);
+        if(item["two"].length!=32 && item["two"].length!=35)
+            alert("Plaintext should only have 16 bytes of characters")
+        else{
+            $.ajax({
+                type: "POST",
+                url:"/experiment/encrypt",
+                data: JSON.stringify(item),
+                contentType: 'application/json;charset=UTF-8',
 
-    $.ajax({
-        type: "POST",
-        url:"/experiment/encrypt",
-        data: JSON.stringify(item),
-        contentType: 'application/json;charset=UTF-8',
-
-    success: function(result){
-        $('#ciphertext').val(result);
-        console.log(result);
+            success: function(result){
+                $('#ciphertext').val(result);
+                console.log(result);
+                }
+            });
         }
-    });
+    }
 }
 
 function doDecryption() {
     item ={}
     item["one"] = document.getElementById('key').value; 
+    if(item["one"].length!=32 && item["one"].length!=35)
+        alert("Key should only have 16 bytes of characters")
+    else{
         item["two"] = document.getElementById('ciphertext').value;
-        console.log(item);
+        if(item["two"].length!=32 && item["two"].length!=35)
+            alert("Ciphertext should only have 16 bytes of characters")
+        else{
+            $.ajax({
+                type: "POST",
+                url:"/experiment/decrypt",
+                data: JSON.stringify(item),
+                contentType: 'application/json;charset=UTF-8',
 
-    $.ajax({
-        type: "POST",
-        url:"/experiment/decrypt",
-        data: JSON.stringify(item),
-        contentType: 'application/json;charset=UTF-8',
-
-    success: function(result){
-        $('#plaintext').val(result);
-        console.log(result);
+            success: function(result){
+                $('#plaintext').val(result);
+                console.log(result);
+                }
+            });
         }
-    });
+    }
 }
 
 function checkAnswer() {

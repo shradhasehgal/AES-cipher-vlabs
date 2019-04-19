@@ -31,6 +31,6 @@ function checkQuiz() {
 		document.getElementById('Q3').style.backgroundColor = "red";		
 	}
 	console.log($('input[name=A1]:checked').val())
-	alert("Previous records of answers coming Up. You scored "+c+"/3. Congrats!");
+	alert("You scored "+c+"/3. Congrats!");
 	c=0;
 }
