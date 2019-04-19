@@ -8,8 +8,6 @@ function nextPlainText() {
 
 		success: function(result){
 			$('#plainarea').text(result.plainarea);
-			console.log(result);
-			console.log(result.plainarea)
 		}
 	});
 }
@@ -21,7 +19,6 @@ function nextKey() {
 
 	success: function(result){
 		$('#keyarea').text(result.key);
-		console.log(result.key)
 		}
 	});
 }
@@ -46,8 +43,6 @@ function nextCtr() {
 
 	success: function(result){
 		$('#ctr').text(result.ctr);
-		console.log("Ctr printed")
-		console.log(result.ctr)
 		}
 	});
 }
@@ -61,8 +56,6 @@ function showAnswer() {
 success: function(result){
 	$('#showans').css({"display": "block"})
 	$('#showans').val(result.ans);
-	console.log($('#showans').val)
-	console.log(result.ans)
 	}
 });
 }

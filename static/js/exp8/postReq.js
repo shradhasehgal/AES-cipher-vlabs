@@ -102,7 +102,6 @@ function doEncryption() {
 
             success: function(result){
                 $('#ciphertext').val(result);
-                console.log(result);
                 }
             });
         }
@@ -128,7 +127,6 @@ function doDecryption() {
 
             success: function(result){
                 $('#plaintext').val(result);
-                console.log(result);
                 }
             });
         }
@@ -139,7 +137,6 @@ function checkAnswer() {
     // The answer calculated by the user is already precalculated by the program, hence  when asked to check
     // It is sent to the script for validation
     item = document.getElementById('userans').value; 
-        console.log(item);
 
     $.ajax({
         type: "POST",
@@ -148,7 +145,6 @@ function checkAnswer() {
         contentType: 'application/json;charset=UTF-8',
 
     success: function(result){
-        console.log(result);
         if(result == "True")
             alert("Answer is correct!")
         else alert("Answer is incorrect!")
