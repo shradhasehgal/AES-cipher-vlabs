@@ -48,34 +48,3 @@ function nextCtr() {
 		}
 	});
 }
-
-/*function checkQuiz() {
-    $.ajax({
-		type: "GET",
-		url:"/experiment/quizdata",
-
-	success: function(result){
-		c = 0
-		var str=""
-		if(result["one"] == "1")
-		{
-			c+=1
-			str+="Answer 1: Correct\n"
-		}
-
-		if(result["two"] == "ECB")
-		{
-			c+=1
-			str += "Answer 2: Correct\n"
-		}
-
-		if(result["three"] == "1")
-		{
-			c+=1
-			str += "Answer 3: Correct\n"
-		}
-
-		alert("You scored "+c+"/3"+'\n'+str)
-	});
-}
-}*/
