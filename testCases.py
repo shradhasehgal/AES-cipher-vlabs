@@ -11,6 +11,8 @@ encyptedDataOFB = "66b8a5aa 38bc654a c557222c f30eb6c0 347f6afd d9344ff9 884ce95
 encyptedDataCTR = "ff5b16de 59fb7b84 15542088 504bb575 af7457f5 f98bf13b b4511688 1ba850cc 83b605fb afc1cdcc 9ceb6a7e 38dce73f 4ac681b5 93608d74 e864c747 9e56b931 f44310b1 72c434d9 1e67f07a eab6c527"
 
 #All the variables in required format
+#The values given above are Hex but the program evaluates everything in bytes
+#Hence removing all the spaces and converting to bytes
 keyReq = bytes.fromhex("".join(key.split(" ")))
 plaintextReq = bytes.fromhex("".join(plaintext.split(" ")))
 ivReq = bytes.fromhex("".join(iv.split(" ")))
@@ -20,6 +22,7 @@ encyptedDataCBCReq = bytes.fromhex("".join(encyptedDataCBC.split(" ")))
 encyptedDataOFBReq = bytes.fromhex("".join(encyptedDataOFB.split(" ")))
 encyptedDataCTRReq = bytes.fromhex("".join(encyptedDataCTR.split(" ")))
 
+#This is the object generated to give the output required
 def computation(mode):
     new = aesMeth(mode)
     new.key = keyReq

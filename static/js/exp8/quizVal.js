@@ -1,9 +1,9 @@
 function checkQuiz() {
 
-	c = 0
+	correctAns = 0
 	if($('input[name=A1]:checked').val() == "2") {
 		document.getElementById('Q1').style.backgroundColor = "green";
-		c+=1;
+		correctAns+=1;
 	}
 
 	else
@@ -13,7 +13,7 @@ function checkQuiz() {
 
 	if($('input[name=A2]:checked').val()=="ECB") {
 		document.getElementById('Q2').style.backgroundColor = "green";
-		c+=1;
+		correctAns+=1;
 	}
 
 	else
@@ -23,7 +23,7 @@ function checkQuiz() {
 
 	if($('input[name=A3]:checked').val()=="4"){
 		document.getElementById('Q3').style.backgroundColor = "green";
-		c+=1;
+		correctAns+=1;
 	}
 
 	else
@@ -31,6 +31,6 @@ function checkQuiz() {
 		document.getElementById('Q3').style.backgroundColor = "red";		
 	}
 	console.log($('input[name=A1]:checked').val())
-	alert("You scored "+c+"/3. Congrats!");
-	c=0;
+	alert("You scored "+correctAns+"/3. Congrats!");
+	correctAns=0;
 }

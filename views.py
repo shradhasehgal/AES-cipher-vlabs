@@ -1,11 +1,11 @@
-from flask import Flask, render_template, jsonify, request
-from aesLib import *
-from Crypto.Cipher import AES
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, jsonify, request #Basic requirement for the python script to work as a flask App
+from aesLib import * #This is where the algorithm required for all the calculations is calculated
+from Crypto.Cipher import AES #For local encryptions
+from flask_sqlalchemy import SQLAlchemy #For the database
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Quiz.db'
-## Having a default object when no object is selected
+## Having a default object when no method is selected in the Experiment
 aes_obj = aesMeth()
 key = 128
 
@@ -32,6 +32,7 @@ class students(db.Model):
 
 db.create_all()
 
+#Rendering of pages for linking to work
 @app.route("/")
 def introduction():
     return render_template('Introduction.html', topic ='Introduction')
@@ -68,7 +69,7 @@ def procedure():
 def further():
     return render_template('Further.html', topic ='Further Readings')
 
-
+#This request allows the object aes_obj to change its mode of operation
 @app.route("/experiment/selectMode", methods=['POST'])
 def selectMode():
     data = request.get_json()
@@ -98,6 +99,7 @@ def selectKey():
 
 @app.route("/experiment/nextplaintext", methods=['GET'])
 def nextplaintext():
+    #Generates a new plaintext before storing it 
     aes_obj.genPlainText()
 
     info = {
